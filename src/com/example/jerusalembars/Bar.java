@@ -7,7 +7,7 @@ public class Bar {
 	private String happyHour;
 //	private Loaction loc;
 	public Bar(String name, String happyHour){
-		System.out.println("commut");
+		System.out.println("commit");
 		this.name = name;
 		this.happyHour = happyHour;
 	}
