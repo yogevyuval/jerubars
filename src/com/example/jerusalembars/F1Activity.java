@@ -42,6 +42,7 @@ public class F1Activity extends DashboardActivity
 protected void onCreate(Bundle savedInstanceState) 
 {
     super.onCreate(savedInstanceState);
+    System.out.println("aaa");
     setContentView (R.layout.activity_f1);
     setTitleFromActivityLabel (R.id.title_text);
 }
