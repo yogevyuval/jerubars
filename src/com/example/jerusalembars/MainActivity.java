@@ -1,4 +1,6 @@
 package com.example.jerusalembars;
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -21,6 +23,8 @@ public class MainActivity extends ActionBarActivity {
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		Parse.initialize(this, "zvbOZtAT5rR0Spw53liGYIcamBvz7mnXmRI0zxxQ", "pQPlEH0OjDM2eSzNmCmMmTWLnD2pvWU00Ak4f8h0");
+
 	}
 
 	@Override
