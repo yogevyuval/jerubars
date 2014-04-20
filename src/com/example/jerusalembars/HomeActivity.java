@@ -1,4 +1,6 @@
+
 /*
+
  * Copyright (C) 2011 Wglxy.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +18,7 @@
 
 package com.example.jerusalembars;
 
+import com.parse.Parse;
 import android.os.Bundle;
 
 import com.parse.Parse;
@@ -120,12 +123,5 @@ public class HomeActivity extends DashboardActivity {
 		super.onStop();
 	}
 
-	/**
- */
-	// Click Methods
-
-	/**
- */
-	// More Methods
 
 } // end class

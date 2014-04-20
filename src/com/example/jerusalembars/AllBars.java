@@ -45,7 +45,7 @@ public class AllBars extends DashboardActivity {
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 	    super.onCreate(savedInstanceState);
-	    setContentView (R.layout.activity_f1);
+	    setContentView (R.layout.all_bars);
 	    
         list=(ListView)findViewById(R.id.list);
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Bar");
@@ -74,4 +74,4 @@ public class AllBars extends DashboardActivity {
 			}
         });
     }
-} // end class
+}
