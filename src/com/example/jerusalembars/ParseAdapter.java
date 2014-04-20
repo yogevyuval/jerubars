@@ -27,7 +27,6 @@ class ParseAdapter extends BaseAdapter {
 		this.activity = a;
 		this.data = bars;
 		ParseAdapter.inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		//imageLoader=new ImageLoader(activity.getApplicationContext());
 	}
 	
 	@Override

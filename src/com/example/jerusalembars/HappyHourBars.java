@@ -24,7 +24,7 @@ import android.os.Bundle;
  * 
  */
 
-public class AllBars extends BarsList{
+public class HappyHourBars extends BarsList {
 
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -33,6 +33,6 @@ public class AllBars extends BarsList{
 
 	@Override
 	protected void filterQuery() {
-		return;
+		query.whereGreaterThan("test", 1);
 	}
 }
