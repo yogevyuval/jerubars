@@ -1,4 +1,6 @@
+
 /*
+
  * Copyright (C) 2011 Wglxy.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +18,7 @@
 
 package com.example.jerusalembars;
 
+import com.parse.Parse;
 import android.os.Bundle;
 
 /**
@@ -40,6 +43,7 @@ protected void onCreate(Bundle savedInstanceState)
 {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
+    Parse.initialize(this, "zvbOZtAT5rR0Spw53liGYIcamBvz7mnXmRI0zxxQ", "pQPlEH0OjDM2eSzNmCmMmTWLnD2pvWU00Ak4f8h0");
 }
     
 /**

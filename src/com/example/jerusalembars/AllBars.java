@@ -16,7 +16,17 @@
 
 package com.example.jerusalembars;
 
+import java.util.List;
+
+import android.app.ListActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 /**
  * This is the activity for feature 1 in the dashboard application.
@@ -24,7 +34,7 @@ import android.os.Bundle;
  *
  */
 
-public class F1Activity extends DashboardActivity 
+public class AllBars extends ListActivity 
 {
 
 /**
@@ -42,8 +52,29 @@ public class F1Activity extends DashboardActivity
 protected void onCreate(Bundle savedInstanceState) 
 {
     super.onCreate(savedInstanceState);
-    setContentView (R.layout.activity_f1);
-    setTitleFromActivityLabel (R.id.title_text);
+    setContentView (R.layout.all_bars);
+    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
+            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+            "Linux", "OS/2" };
+        // use your custom layout
+    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+            R.layout.rowlayout, R.id.label, values);
+    setListAdapter(adapter);
+    
+    
+    
+    ParseQuery<ParseObject> query = ParseQuery.getQuery("Bar");
+    query.findInBackground(new FindCallback<ParseObject>() {
+        public void done(List<ParseObject> barList, ParseException e) {
+            String s = "";
+            for (ParseObject item : barList) {
+            	s += item.get("name") + " ";
+            }
+            if (e == null) {
+            } else {
+            }
+        }
+    });
 }
     
 } // end class
