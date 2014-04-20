@@ -31,7 +31,9 @@ class ParseAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-		return data.size();
+		if(! data.equals(null))
+			return data.size();
+		return 0;
 	}
 	
 	@Override
@@ -69,5 +71,9 @@ class ParseAdapter extends BaseAdapter {
 		});
 		//imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);
 		return vi;
+	}
+	
+	public List<ParseObject> getData(){
+		return this.data;
 	}
 }

@@ -27,6 +27,10 @@
             android:theme="@style/Theme.D1"
             android:label="@string/title_feature1"
             />
+      <activity android:name=".BarDesc"
+            android:theme="@style/Theme.D1"
+            android:label="@string/title_feature1"
+            />
       <activity android:name=".BarsList"
             android:theme="@style/Theme.D1"
             android:label="@string/title_feature2"

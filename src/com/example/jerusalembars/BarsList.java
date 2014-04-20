@@ -19,6 +19,7 @@ package com.example.jerusalembars;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -68,10 +69,25 @@ public abstract class BarsList extends Activity{
  
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("bar", "Clicked"  + position);
+				
+				ParseObject parseObj = adapter.getData().get(position);
+				Intent intent = new Intent(getApplicationContext(),BarDesc.class);
+				Bundle bu = createBundle(parseObj);
+				intent.putExtras(bu);
+				startActivity(intent);
+				finish();
+                Log.d("bar", "Clicked"  + position); 
 			}
         });
     }
+	
+	public static Bundle createBundle(ParseObject parseObj){
+		Bundle bu = new Bundle();
+		bu.putString("name", parseObj.getString("name"));
+		bu.putString("address", parseObj.getString("address"));
+		bu.putString("description", parseObj.getString("description"));
+		return bu;
+	}
 
 	abstract protected void filterQuery();
 }
