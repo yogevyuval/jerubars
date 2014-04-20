@@ -16,6 +16,7 @@
 
 package com.example.jerusalembars;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 /**
@@ -30,6 +31,7 @@ public class AllBars extends BarsList{
 	{
 	    super.onCreate(savedInstanceState);
 	}
+	
 
 	@Override
 	protected void filterQuery() {
