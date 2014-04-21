@@ -158,14 +158,14 @@ public abstract class DashboardActivity extends Activity {
 			startActivity(new Intent(getApplicationContext(), AllBars.class));
 			break;
 		case R.id.home_btn_feature2:
-			startActivity(new Intent(getApplicationContext(), F3Activity.class));
+			startActivity(new Intent(getApplicationContext(), F4Activity.class));
 			break;
 		case R.id.home_btn_feature3:
 			startActivity(new Intent(getApplicationContext(), HappyHourBars.class));
 
 			break;
 		case R.id.home_btn_feature4:
-			startActivity(new Intent(getApplicationContext(), F4Activity.class));
+			startActivity(new Intent(getApplicationContext(), AllPrices.class));
 			break;
 		default:
 			break;
