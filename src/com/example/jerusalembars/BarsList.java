@@ -1,13 +1,11 @@
 package com.example.jerusalembars;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,10 +13,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.parse.FindCallback;
-import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQuery.CachePolicy;
@@ -35,7 +31,8 @@ public abstract class BarsList extends Activity {
 
 		list = (ListView) findViewById(R.id.list);
 		query = ParseQuery.getQuery("Bar");
-		query.setCachePolicy(CachePolicy.CACHE_THEN_NETWORK);
+		query.setCachePolicy(CachePolicy.CACHE_ELSE_NETWORK);
+		query.setMaxCacheAge(TimeUnit.SECONDS.toMillis(20));
 		filterQuery();
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> bars, ParseException e) {
@@ -54,12 +51,10 @@ public abstract class BarsList extends Activity {
 		// Click event for single list row
 		list.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 				ParseObject parseObj = adapter.getData().get(position);
-				Intent intent = new Intent(getApplicationContext(),
-						BarDesc.class);
+				Intent intent = new Intent(getApplicationContext(), BarDesc.class);
 				Bundle bu = createBundle(parseObj);
 				intent.putExtras(bu);
 				startActivity(intent);
@@ -73,12 +68,11 @@ public abstract class BarsList extends Activity {
 		final Bundle bu = new Bundle();
 		bu.putString("name", parseObj.getString("name"));
 		bu.putString("address", parseObj.getString("address"));
+		bu.putString("happy_hour_begin", parseObj.getString("happy_hour_begin"));
+		bu.putString("happy_hour_end", parseObj.getString("happy_hour_end"));
+
 		bu.putString("description", parseObj.getString("description"));
-		ParseGeoPoint point = parseObj.getParseGeoPoint("pos");
-		if (point != null) {
-			bu.putDouble("lat", point.getLatitude());
-			bu.putDouble("long", point.getLongitude());
-		}
+		
 		ParseFile file = parseObj.getParseFile("photo");
 
 		try {
@@ -89,12 +83,14 @@ public abstract class BarsList extends Activity {
 		}
 		return bu;
 	}
-//	@Override
-//	public void onBackPressed() {
-//		Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
-//		startActivity(intent);
-//		return;
-//	}
+
+	
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent(BarsList.this, HomeActivity.class);
+		startActivity(intent);
+		return;
+	}
 
 	abstract protected void filterQuery();
 }

@@ -5,116 +5,63 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingTop="100dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical" >
-        <Button
-            android:id="@+id/get_directions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:shadowColor="@android:color/black"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="1"
-            android:text="נווט לבר"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        android:orientation="vertical"
+        android:paddingTop="10dp" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+        <ImageView
+            android:id="@+id/bar_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="right"
+            android:paddingTop="40dp"
+            android:src="@drawable/ic_launcher" />
 
-           
+        <LinearLayout style="@style/details_item" >
 
             <TextView
                 android:id="@+id/bar_name"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:paddingBottom="10dp"
-                android:hint="אוגנדה"
-                android:textSize="20sp" />
-            
-             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="שם הבר:"
-                android:textSize="20sp" />
+                style="@style/details_text"
+                android:hint="אוגנדה" />
+
+            <TextView
+                style="@style/details_text"
+                android:text="שם הבר:" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            
+        <LinearLayout style="@style/details_item" >
 
             <TextView
                 android:id="@+id/bar_location"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:paddingBottom="10dp"
+                style="@style/details_text"
+                android:clickable="true"
                 android:hint="כתובת אמיתית"
-                android:textSize="20sp" />
+                android:linksClickable="true"
+                android:textStyle="italic" />
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="כתובת:"
-                android:textSize="20sp" />
+                style="@style/details_text"
+                android:text="כתובת:" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-           
+        <LinearLayout style="@style/details_item" >
 
             <TextView
                 android:id="@+id/bar_happy"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="יובי "
-                android:textSize="20sp" />
-             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:paddingBottom="10dp"
-                android:ems="10"
-                android:text="האפי האוור:"
-                android:textSize="20sp" />
-        </LinearLayout>
-         <TextView
-                android:id="@+id/bar_desc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="תיאור:"
-                android:textSize="20sp" />
+                style="@style/details_text"
+                android:gravity="right"
+                android:hint="יובי " />
 
-        
-        <ImageView
-            android:id="@+id/bar_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher" />
+            <TextView
+                style="@style/details_text"
+                android:text="האפי האוור:" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bar_desc"
+            style="@style/details_text"
+            android:text="תיאור:" />
 
         <Button
             android:id="@+id/recommend"

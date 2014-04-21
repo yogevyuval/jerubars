@@ -16,7 +16,11 @@
 
 package com.example.jerusalembars;
 
+import java.util.Date;
+
 import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.util.Log;
 
 /**
  * This is the activity for feature 1 in the dashboard application. It displays
@@ -33,6 +37,8 @@ public class HappyHourBars extends BarsList {
 
 	@Override
 	protected void filterQuery() {
-		query.whereGreaterThan("test", 1);
+		String curTimeString = DateFormat.format("HH:mm", new Date().getTime()).toString();
+		query.whereLessThanOrEqualTo("happy_hour_begin", curTimeString);
+		query.whereGreaterThanOrEqualTo("happy_hour_end", curTimeString);
 	}
 }

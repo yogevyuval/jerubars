@@ -15,52 +15,71 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/db1_root"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:padding="6dip">
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:id="@+id/divider_empty"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
-        <Button android:id="@+id/home_btn_feature1"
-            style="@style/HomeButton"
-            android:onClick="onClickFeature"
-            android:text="@string/title_feature1"
-            android:drawableTop="@drawable/home_button1"/>
-        <Button android:id="@+id/home_btn_feature2"
-            style="@style/HomeButton"
-            android:onClick="onClickFeature"
-            android:text="@string/title_feature2"
-            android:drawableTop="@drawable/home_button2"/>
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp" >
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
-        <Button android:id="@+id/home_btn_feature3"
+        android:layout_below="@id/divider_empty"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/home_btn_feature3"
             style="@style/HomeButton"
+            android:drawableTop="@drawable/home_button3"
             android:onClick="onClickFeature"
-            android:text="@string/title_feature3"
-            android:drawableTop="@drawable/home_button3"/>
-        <Button android:id="@+id/home_btn_feature4"
+            android:text="@string/title_feature3" />
+
+        <Button
+            android:id="@+id/home_btn_feature4"
             style="@style/HomeButton"
+            android:drawableTop="@drawable/home_button4"
             android:onClick="onClickFeature"
-            android:text="@string/title_feature4"
-            android:drawableTop="@drawable/home_button4"/>
+            android:text="@string/title_feature4" />
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/first_two_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/divider_empty"
+        android:orientation="horizontal" >
 
-</LinearLayout>
+        <Button
+            android:id="@+id/home_btn_feature1"
+            style="@style/HomeButton"
+            android:drawableTop="@drawable/home_button1"
+            android:onClick="onClickFeature"
+            android:text="@string/title_feature1" />
+
+        <Button
+            android:id="@+id/home_btn_feature2"
+            style="@style/HomeButton"
+            android:drawableTop="@drawable/home_button2"
+            android:onClick="onClickFeature"
+            android:text="@string/title_feature2" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/first_two_buttons"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="37dp"
+        android:src="@drawable/logo" />
+
+</RelativeLayout>
