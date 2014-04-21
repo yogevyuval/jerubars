@@ -51,7 +51,6 @@ public abstract class PricesList extends Activity {
 		list = (ListView) findViewById(R.id.listPrices);
 		query = ParseQuery.getQuery("Prices");
 		query.setCachePolicy(CachePolicy.CACHE_THEN_NETWORK);
-		filterQuery();
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> bars, ParseException e) {
 				adapter = new PriceParseAdapter(PricesList.this, bars);
@@ -78,5 +77,4 @@ public abstract class PricesList extends Activity {
 //		return;
 //	}
 
-	abstract protected void filterQuery();
 }

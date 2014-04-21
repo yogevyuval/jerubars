@@ -21,12 +21,15 @@ class PriceParseAdapter extends BaseAdapter {
 	private Activity activity;
 	private List<ParseObject> data;
 	private static LayoutInflater inflater = null;
+	private int max ;
 	//public ImageLoader imageLoader; 
 	
 	public PriceParseAdapter(Activity a, List<ParseObject> bars) {
 		this.activity = a;
 		this.data = bars;
 		PriceParseAdapter.inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		max = getLongestName();
+		fixNames();
 	}
 	
 	@Override
@@ -56,6 +59,8 @@ class PriceParseAdapter extends BaseAdapter {
 		TextView guiness = (TextView)vi.findViewById(R.id.Guiness);
 		TextView vodka = (TextView)vi.findViewById(R.id.Vodka);
 		TextView chips = (TextView)vi.findViewById(R.id.Chips);
+		TextView name = (TextView)vi.findViewById(R.id.prices_name);
+
 		
 		ParseObject bar = data.get(position);
 		// Setting all values in listview
@@ -63,6 +68,7 @@ class PriceParseAdapter extends BaseAdapter {
 		guiness.setText(bar.get("Guiness") +"");
 		vodka.setText(bar.get("Vodka") +"");
 		chips.setText(bar.get("Chips") +"");
+		name.setText(bar.get("Name")+"");
 
 		
 		
@@ -72,5 +78,31 @@ class PriceParseAdapter extends BaseAdapter {
 	
 	public List<ParseObject> getData(){
 		return this.data;
+	}
+	
+	public int getLongestName(){
+		int max = 0;
+		int current = 0;
+		for (int i = 0; i < data.size(); i++) {
+			current = (data.get(i).get("Name")+"").length();
+			if(current > max)
+				max = current;
+		}
+		return max;
+	}
+	
+	public void fixNames(){
+		int curr_len = 0;
+		for (int i = 0; i<data.size(); i++){
+			curr_len = (data.get(i).get("Name")+"").length();
+			data.get(i).put("Name", (data.get(i).get("Name")+"")+space_gen(max-curr_len));
+		}
+	}
+	public String space_gen(int amount){
+		String ret = "";
+		for( int i = 0;i<amount;i++){
+			ret+=" ";
+		}
+		return ret;
 	}
 }

@@ -18,7 +18,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dip" >
-
+			 <TextView
+                android:id="@+id/prices_name"
+                android:paddingRight="15dp"
+                android:text="name"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+			 
             <TextView
                 android:id="@+id/Guiness"
                 android:paddingRight="15dp"
