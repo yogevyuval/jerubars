@@ -67,6 +67,8 @@ public abstract class BarsList extends Activity{
 		bu.putString("name", parseObj.getString("name"));
 		bu.putString("address", parseObj.getString("address"));
 		bu.putString("description", parseObj.getString("description"));
+		bu.putDouble("lat", parseObj.getParseGeoPoint("pos").getLatitude());
+		bu.putDouble("long", parseObj.getParseGeoPoint("pos").getLongitude());
 		return bu;
 	}
 

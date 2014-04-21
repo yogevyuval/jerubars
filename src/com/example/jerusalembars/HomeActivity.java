@@ -18,7 +18,6 @@
 
 package com.example.jerusalembars;
 
-import com.parse.Parse;
 import android.os.Bundle;
 
 import com.parse.Parse;
