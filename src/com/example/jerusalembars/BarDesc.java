@@ -22,17 +22,16 @@ import com.parse.ParseFile;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * This is the activity for feature 2 in the dashboard application. It displays
- * some text and provides a way to get back to the home activity.
- * 
- */
 
 public class BarDesc extends Activity {
 
@@ -68,6 +67,32 @@ public class BarDesc extends Activity {
 		if (data != null) {
 			Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
 			img.setImageBitmap(bmp);
+		}
+		
+		Button get_directions = (Button) findViewById(R.id.get_directions);
+		OnClickListener directionsListener = new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				GPSTracker tracker = new GPSTracker(BarDesc.this);
+			    if (tracker.canGetLocation() == false) {
+			        tracker.showSettingsAlert();
+			    } else {
+			        double target_lat = getIntent().getExtras().getDouble("lat");
+			        double target_long = getIntent().getExtras().getDouble("long");
+			        //String url = "http://maps.google.com/maps?f=d&daddr=hataklit";
+			        String url = "http://maps.google.com/maps?f=d&daddr=" + target_lat + "," + target_long + "(Abc)";
+					Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
+					intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+					startActivity(intent);
+			    }
+			}
+		};
+		
+		if (!getIntent().getExtras().containsKey("lat")) {
+			get_directions.setEnabled(false);
+		}
+		else {
+			get_directions.setOnClickListener(directionsListener);
 		}
 	}
 

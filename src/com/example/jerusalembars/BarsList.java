@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2011 Wglxy.com
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.jerusalembars;
 
 import java.util.List;
@@ -34,6 +18,7 @@ import com.parse.FindCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQuery.CachePolicy;
@@ -54,10 +39,10 @@ public abstract class BarsList extends Activity {
 		filterQuery();
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> bars, ParseException e) {
-				adapter = new ParseAdapter(BarsList.this, bars);
-				list.setAdapter(adapter);
 
 				if (e == null) {
+					adapter = new ParseAdapter(BarsList.this, bars);
+					list.setAdapter(adapter);
 					Log.d("bar", "Retrieved " + bars.size() + " bars");
 				} else {
 					Log.d("bar", "Error: " + e.getMessage());
@@ -68,7 +53,6 @@ public abstract class BarsList extends Activity {
 
 		// Click event for single list row
 		list.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -90,6 +74,11 @@ public abstract class BarsList extends Activity {
 		bu.putString("name", parseObj.getString("name"));
 		bu.putString("address", parseObj.getString("address"));
 		bu.putString("description", parseObj.getString("description"));
+		ParseGeoPoint point = parseObj.getParseGeoPoint("pos");
+		if (point != null) {
+			bu.putDouble("lat", point.getLatitude());
+			bu.putDouble("long", point.getLongitude());
+		}
 		ParseFile file = parseObj.getParseFile("photo");
 
 		try {
@@ -98,7 +87,6 @@ public abstract class BarsList extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return bu;
 	}
 //	@Override

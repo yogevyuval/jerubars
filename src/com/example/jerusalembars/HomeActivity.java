@@ -22,7 +22,6 @@ import com.parse.ParseObject;
 
 import android.os.Bundle;
 
-import com.parse.Parse;
 
 /**
  * This is a simple activity that demonstrates the dashboard user interface

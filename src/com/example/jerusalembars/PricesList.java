@@ -53,10 +53,10 @@ public abstract class PricesList extends Activity {
 		query.setCachePolicy(CachePolicy.CACHE_THEN_NETWORK);
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> bars, ParseException e) {
-				adapter = new PriceParseAdapter(PricesList.this, bars);
-				list.setAdapter(adapter);
 
 				if (e == null) {
+					adapter = new PriceParseAdapter(PricesList.this, bars);
+					list.setAdapter(adapter);
 					Log.d("bar", "Retrieved " + bars.size() + " bars");
 				} else {
 					Log.d("bar", "Error: " + e.getMessage());

@@ -34,9 +34,7 @@ class PriceParseAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-		if(! data.equals(null))
-			return data.size();
-		return 0;
+		return data.size();
 	}
 	
 	@Override
