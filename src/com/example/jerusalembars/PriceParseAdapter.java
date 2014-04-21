@@ -52,13 +52,19 @@ class PriceParseAdapter extends BaseAdapter {
 		if(convertView==null)
 			vi = inflater.inflate(R.layout.price_row, null);
 		
-		TextView title = (TextView)vi.findViewById(R.id.Guiness); // title
-		TextView artist = (TextView)vi.findViewById(R.id.Goldstar); // artist name
+		TextView goldstar = (TextView)vi.findViewById(R.id.Goldstar); 
+		TextView guiness = (TextView)vi.findViewById(R.id.Guiness);
+		TextView vodka = (TextView)vi.findViewById(R.id.Vodka);
+		TextView chips = (TextView)vi.findViewById(R.id.Chips);
 		
 		ParseObject bar = data.get(position);
 		// Setting all values in listview
-		title.setText(bar.get("Goldstar").toString());
-		artist.setText(bar.get("Guiness").toString());
+		goldstar.setText(bar.get("Goldstar")+"");
+		guiness.setText(bar.get("Guiness") +"");
+		vodka.setText(bar.get("Vodka") +"");
+		chips.setText(bar.get("Chips") +"");
+
+		
 		
 		//imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);
 		return vi;
