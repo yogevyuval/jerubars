@@ -33,8 +33,5 @@ public class AllPrices extends PricesList{
 	}
 	
 
-	@Override
-	protected void filterQuery() {
-		return;
-	}
+	
 }
