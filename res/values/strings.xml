@@ -17,7 +17,7 @@
 <resources>
     <string name="hello">Choose one of the features below.</string>
 
-    <string name="app_name">Dashboard Demo</string>
+    <string name="app_name">Jerusalem Bars</string>
     <string name="description_logo">Demo</string>
 
     <string name="description_about">About</string>
@@ -38,7 +38,7 @@
     <string name="feature1_intro">רשימת בארים קרובים</string>
     <string name="feature2_intro">מפת בארים</string>
     <string name="feature3_intro">בארים שיש להם האפי האוור</string>
-    <string name="feature4_intro">השוואות מחירים</string>
+    <string name="feature4_intro">בארים שיש להם האפי האוור</string>
   
 
 </resources>

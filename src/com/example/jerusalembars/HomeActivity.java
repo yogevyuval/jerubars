@@ -1,4 +1,3 @@
-
 /*
 
  * Copyright (C) 2011 Wglxy.com
@@ -18,9 +17,11 @@
 
 package com.example.jerusalembars;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+
 import android.os.Bundle;
 
-import com.parse.Parse;
 
 /**
  * This is a simple activity that demonstrates the dashboard user interface
@@ -44,8 +45,10 @@ public class HomeActivity extends DashboardActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		Parse.initialize(this, "zvbOZtAT5rR0Spw53liGYIcamBvz7mnXmRI0zxxQ",
-				"pQPlEH0OjDM2eSzNmCmMmTWLnD2pvWU00Ak4f8h0");
+		// Parse.initialize(this, "zvbOZtAT5rR0Spw53liGYIcamBvz7mnXmRI0zxxQ",
+		// "pQPlEH0OjDM2eSzNmCmMmTWLnD2pvWU00Ak4f8h0");
+		Parse.initialize(this, "9OzbTskXR5DTmhbxZK40OSuVMllHY1qV4HAG8QSP",
+				"SPH6u1Dn6nBtJR0O4TbhjDylsX0QSQkTG7V4DYbB");
 	}
 
 	/**
@@ -121,6 +124,5 @@ public class HomeActivity extends DashboardActivity {
 	protected void onStop() {
 		super.onStop();
 	}
-
 
 } // end class

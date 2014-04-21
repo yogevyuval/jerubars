@@ -41,7 +41,7 @@
             android:theme="@style/Theme.D1"
             android:label="@string/title_feature2"
             />
-      <activity android:name=".F3Activity"
+      <activity android:name=".AllPrices"
             android:theme="@style/Theme.D1"
             android:label="@string/title_feature3"
             />

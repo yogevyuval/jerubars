@@ -25,7 +25,7 @@ import android.os.Bundle;
  * 
  */
 
-public class AllBars extends BarsList{
+public class AllPrices extends PricesList{
 
 	protected void onCreate(Bundle savedInstanceState) 
 	{

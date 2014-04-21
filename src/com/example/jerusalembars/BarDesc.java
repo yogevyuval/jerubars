@@ -16,9 +16,15 @@
 
 package com.example.jerusalembars;
 
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,7 +35,20 @@ import android.widget.TextView;
 
 public class BarDesc extends Activity {
 
-	private Button get_directions;
+	/**
+	 * onCreate
+	 * 
+	 * Called when the activity is first created. This is where you should do
+	 * all of your normal static set up: create views, bind data to lists, etc.
+	 * This method also provides you with a Bundle containing the activity's
+	 * previously frozen state, if there was one.
+	 * 
+	 * Always followed by onStart().
+	 * 
+	 * @param savedInstanceState
+	 *            Bundle
+	 */
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bar_page);
@@ -43,11 +62,15 @@ public class BarDesc extends Activity {
 		TextView desc = (TextView) findViewById(R.id.bar_desc);
 		desc.setText(this.getIntent().getExtras().getString("description"));
 
-		ImageView img = (ImageView) findViewById(R.id.bar_image);
+		final ImageView img = (ImageView) findViewById(R.id.bar_image);
+		byte[] data = this.getIntent().getExtras().getByteArray("photo");
+		if (data != null) {
+			Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+			img.setImageBitmap(bmp);
+		}
 		
-		get_directions = (Button) findViewById(R.id.get_directions);
-		get_directions.setOnClickListener(new OnClickListener() {
-			
+		Button get_directions = (Button) findViewById(R.id.get_directions);
+		OnClickListener directionsListener = new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				GPSTracker tracker = new GPSTracker(BarDesc.this);
@@ -63,7 +86,21 @@ public class BarDesc extends Activity {
 					startActivity(intent);
 			    }
 			}
-		});
+		};
+		
+		if (!getIntent().getExtras().containsKey("lat")) {
+			get_directions.setEnabled(false);
+		}
+		else {
+			get_directions.setOnClickListener(directionsListener);
+		}
 	}
+
+//	@Override
+//	public void onBackPressed() {
+//		Intent intent = new Intent(getApplicationContext(),AllBars.class);
+//		startActivity(intent);
+//		return;
+//	}
 
 } // end class
