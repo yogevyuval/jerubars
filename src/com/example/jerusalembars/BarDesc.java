@@ -16,22 +16,18 @@
 
 package com.example.jerusalembars;
 
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 
 public class BarDesc extends Activity {
 
@@ -54,53 +50,58 @@ public class BarDesc extends Activity {
 		setContentView(R.layout.bar_page);
 
 		TextView barName = (TextView) findViewById(R.id.bar_name);
-		barName.setText(this.getIntent().getExtras().getString("name"));
+		final Bundle extras = this.getIntent().getExtras();
+		barName.setText(extras.getString("name"));
 
-		TextView barAdress = (TextView) findViewById(R.id.bar_location);
-		barAdress.setText(this.getIntent().getExtras().getString("address"));
+		TextView barAddress = (TextView) findViewById(R.id.bar_location);
+		barAddress.setText(Html.fromHtml("<a href='#'>" + extras.getString("address") + "</a>"));
+
+		if (extras.getString("happy_hour_begin") != null) {
+			TextView happy = (TextView) findViewById(R.id.bar_happy);
+			happy.setText(extras.getString("happy_hour_begin") + " - " + extras.getString("happy_hour_end"));
+		}
 
 		TextView desc = (TextView) findViewById(R.id.bar_desc);
-		desc.setText(this.getIntent().getExtras().getString("description"));
+		desc.setText(extras.getString("description"));
 
 		final ImageView img = (ImageView) findViewById(R.id.bar_image);
-		byte[] data = this.getIntent().getExtras().getByteArray("photo");
+		byte[] data = extras.getByteArray("photo");
 		if (data != null) {
 			Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
 			img.setImageBitmap(bmp);
 		}
-		
-		Button get_directions = (Button) findViewById(R.id.get_directions);
+
 		OnClickListener directionsListener = new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				GPSTracker tracker = new GPSTracker(BarDesc.this);
-			    if (tracker.canGetLocation() == false) {
-			        tracker.showSettingsAlert();
-			    } else {
-			        double target_lat = getIntent().getExtras().getDouble("lat");
-			        double target_long = getIntent().getExtras().getDouble("long");
-			        //String url = "http://maps.google.com/maps?f=d&daddr=hataklit";
-			        String url = "http://maps.google.com/maps?f=d&daddr=" + target_lat + "," + target_long + "(Abc)";
+				if (tracker.canGetLocation() == false) {
+					tracker.showSettingsAlert();
+				} else {
+					// double target_lat =
+					// getIntent().getExtras().getDouble("lat");
+					// double target_long =
+					// getIntent().getExtras().getDouble("long");
+					// String url =
+					// "http://maps.google.com/maps?f=d&daddr=hataklit";
+					// String url = "http://maps.google.com/maps?f=d&daddr=" +
+					// target_lat + "," + target_long;
+					String url = "http://maps.google.com/maps?f=d&daddr=" + extras.getString("address");
 					Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
 					intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
 					startActivity(intent);
-			    }
+				}
 			}
 		};
-		
-		if (!getIntent().getExtras().containsKey("lat")) {
-			get_directions.setEnabled(false);
-		}
-		else {
-			get_directions.setOnClickListener(directionsListener);
-		}
+
+		barAddress.setOnClickListener(directionsListener);
 	}
 
-//	@Override
-//	public void onBackPressed() {
-//		Intent intent = new Intent(getApplicationContext(),AllBars.class);
-//		startActivity(intent);
-//		return;
-//	}
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent(BarDesc.this, AllBars.class);
+		startActivity(intent);
+		return;
+	}
 
 } // end class
