@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="Goldstar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="Guiness" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="Vodka  " />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="Chips" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.01" >
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            android:src="@drawable/guiness" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="     " />
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/goldstarglass" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="   " />
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/vodkashot" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text=" " />
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/chips" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.06" >
+
+        <CheckBox
+            android:id="@+id/guin_check"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            android:checked="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="     " />
+
+        <CheckBox
+            android:id="@+id/gold_check"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            android:checked="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text="   " />
+
+        <CheckBox
+            android:id="@+id/vodkcheck"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            android:checked="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:text=" " />
+
+        <CheckBox
+            android:id="@+id/chipsCheck"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            android:checked="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.90" >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="השווה!" 
+            android:onClick="onButtonClicked"/>
+    </LinearLayout>
+
+</LinearLayout>

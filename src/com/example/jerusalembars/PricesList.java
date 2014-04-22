@@ -38,7 +38,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQuery.CachePolicy;
 
-public abstract class PricesList extends Activity {
+public class PricesList extends Activity {
 
 	ListView list;
 	PriceParseAdapter adapter;
@@ -49,7 +49,7 @@ public abstract class PricesList extends Activity {
 		setContentView(R.layout.prices);
 
 		list = (ListView) findViewById(R.id.listPrices);
-		query = ParseQuery.getQuery("Prices");
+		query = ParseQuery.getQuery("Bar");
 		query.setCachePolicy(CachePolicy.CACHE_THEN_NETWORK);
 		query.findInBackground(new FindCallback<ParseObject>() {
 			public void done(List<ParseObject> bars, ParseException e) {
@@ -57,7 +57,7 @@ public abstract class PricesList extends Activity {
 				if (e == null) {
 					adapter = new PriceParseAdapter(PricesList.this, bars);
 					list.setAdapter(adapter);
-					Log.d("bar", "Retrieved " + bars.size() + " bars");
+					Log.d("bar", "Retrieved " + bars.size() + " bars menus");
 				} else {
 					Log.d("bar", "Error: " + e.getMessage());
 				}
