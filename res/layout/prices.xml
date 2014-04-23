@@ -8,37 +8,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-				<TextView
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:text="                          " />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="                          " />
 
-                <ImageView
-                    android:layout_width="44dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/guiness" />
-                <ImageView
-                    android:layout_width="44dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/goldstarglass" />
-                 <ImageView
-                    android:layout_width="44dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/vodkashot" />
-                 <ImageView
-                    android:layout_width="44dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/chips" />
+        <ImageView
+            android:id="@+id/first_image"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+             />
+
+        <ImageView
+            android:id="@+id/second_image"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+             />
+
+        <ImageView
+            android:id="@+id/third_image"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+            />
+
+        <ImageView
+            android:id="@+id/fourth_image"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+             />
+
+        <ImageView
+            android:id="@+id/fifth_image"
+            android:layout_width="44dp"
+            android:layout_height="80dp"
+             />
     </LinearLayout>
 
     <ListView
         android:id="@+id/listPrices"
         android:layout_width="fill_parent"
-        android:layout_height="474dp"
-        android:layout_weight="1.80"
+        android:layout_height="388dp"
         android:divider="#b5b5b5"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/list_selector" >
     </ListView>
+
+    <Button
+        android:id="@+id/filter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="הצג מחירים רק עבור ברים:" />
 
 </LinearLayout>

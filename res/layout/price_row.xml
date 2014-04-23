@@ -18,34 +18,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dip" >
-			 <TextView
+
+            <TextView
                 android:id="@+id/prices_name"
-                android:paddingRight="15dp"
+                android:paddingRight="30dp"
                 android:text="name"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-			 
+
             <TextView
                 android:id="@+id/Guiness"
                 android:paddingRight="15dp"
-                android:text="30"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/Goldstar"
                 android:paddingRight="15dp"
-                android:text="10"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/Vodka"
                 android:paddingRight="15dp"
-                android:text="34"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/Chips"
                 android:paddingRight="15dp"
-                android:text="17"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/fifth"
+                android:paddingRight="15dp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </TableRow>
     </TableLayout>
