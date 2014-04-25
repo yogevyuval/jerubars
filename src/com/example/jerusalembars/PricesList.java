@@ -31,6 +31,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -48,8 +49,10 @@ public class PricesList extends Activity {
 	ParseQuery<ParseObject> query;
 	ParseQuery<ParseObject> whichPro;
 	List<ParseObject> list_id;
+	PricesList my_self;
 
 	protected void onCreate(Bundle savedInstanceState) {
+		my_self= this;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.prices);
 		Bundle bu = this.getIntent().getExtras();
@@ -162,15 +165,21 @@ public class PricesList extends Activity {
 			public void done(List<ParseObject> bars, ParseException e) {
 
 				if (e == null) {
-					adapter = new PriceParseAdapter(PricesList.this, bars,
+					adapter = new PriceParseAdapter(my_self,PricesList.this, bars,
 							list_id);
 					list.setAdapter(adapter);
+					ArrayList<TextView> text_view = adapter.get_text_view();
+					for (int j = 0; j < text_view.size(); j++) {
+						text_view.get(j).setWidth(adapter.get_max_width());
+					}
+					
 					Log.d("bar", "Retrieved " + bars.size() + " bars menus");
 				} else {
 					Log.d("bar", "Error: " + e.getMessage());
 				}
 			}
 		});
+	
 		// Getting adapter by passing xml data ArrayList
 
 		// Click event for single list row
@@ -183,5 +192,8 @@ public class PricesList extends Activity {
 	// startActivity(intent);
 	// return;
 	// }
+	public void shit(int max){
+		((TextView)this.findViewById(R.id.text_view_padding)).setWidth(max);
 
+	}
 }

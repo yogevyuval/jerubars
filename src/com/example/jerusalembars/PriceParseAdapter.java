@@ -1,5 +1,6 @@
 package com.example.jerusalembars;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -12,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -27,24 +29,21 @@ class PriceParseAdapter extends BaseAdapter {
 	private List<ParseObject> data;
 	private static LayoutInflater inflater = null;
 	private List<ParseObject> id;
-	private int max;
+	private int maxWidth;
+	private ArrayList<TextView> text_view_list;
+	private PricesList p;
 
 	// public ImageLoader imageLoader;
 
-	public PriceParseAdapter(Activity a, List<ParseObject> bars,
+	public PriceParseAdapter(PricesList p,Activity a, List<ParseObject> bars,
 			List<ParseObject> id) {
 		this.activity = a;
 		this.data = bars;
 		this.id = id;
+		this.p = p;
 		PriceParseAdapter.inflater = (LayoutInflater) activity
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		int curr = 0;
-		for (int i = 0; i < bars.size(); i++) {
-			curr = bars.get(i).getString("name").length();
-			if (curr > max)
-				max = curr;
-		}
-
+		text_view_list = new ArrayList<TextView>();
 		// max = getLongestName();
 		// fixNames();
 	}
@@ -111,8 +110,14 @@ class PriceParseAdapter extends BaseAdapter {
 			first.setText("loading");
 
 		}
-		name.setText(bar.get("name") + space_gen(max-bar.getString("name").length()+1));
-
+		name.setText(bar.get("name")+"");
+		text_view_list.add(name);
+		name.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
+		int wid = name.getMeasuredWidth();
+		name.setText(name.getText());
+		maxWidth = Math.max(maxWidth, wid);
+		name.setWidth(maxWidth);
+		p.shit(maxWidth);
 		// imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL),
 		// thumb_image);
 		return vi;
@@ -121,13 +126,11 @@ class PriceParseAdapter extends BaseAdapter {
 	public List<ParseObject> getData() {
 		return this.data;
 	}
-	
-	private static String space_gen(int curr){
-		String ret = "";
-		for (int i = 0; i < curr; i++) {
-			ret+=" ";
-		}
-		return ret;
+	public int get_max_width(){
+		return maxWidth;
+	}
+	public ArrayList<TextView> get_text_view(){
+		return text_view_list;
 	}
 
 }

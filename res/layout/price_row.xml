@@ -21,28 +21,29 @@
 
             <TextView
                 android:id="@+id/prices_name"
-                android:paddingRight="30dp"
+                android:paddingRight="15dp"
                 android:text="name"
+                android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/Guiness"
-                android:paddingRight="15dp"
+                android:paddingRight="19dp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/Goldstar"
-                android:paddingRight="15dp"
+                android:paddingRight="19dp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/Vodka"
-                android:paddingRight="15dp"
+                android:paddingRight="19dp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
                 android:id="@+id/Chips"
-                android:paddingRight="15dp"
+                android:paddingRight="19dp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
